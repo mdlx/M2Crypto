@@ -5,7 +5,7 @@ import os
 import os.path
 import sys
 
-# Medusa 
+# Medusa
 import asyncore
 import default_handler
 import filesys
@@ -25,10 +25,10 @@ FTP_PORT = 9021
 
 hs=http_server.http_server('', HTTP_PORT)
 
-Rand.load_file('../randpool.dat', -1) 
+Rand.load_file('../randpool.dat', -1)
 ssl_ctx=SSL.Context('sslv23')
 ssl_ctx.load_cert('server.pem')
-ssl_ctx.load_verify_location('ca.pem')
+ssl_ctx.load_verify_locations('ca.pem')
 ssl_ctx.load_client_CA('ca.pem')
 #ssl_ctx.set_verify(SSL.verify_peer, 10)
 #ssl_ctx.set_verify(SSL.verify_peer|SSL.verify_fail_if_no_peer_cert, 10)

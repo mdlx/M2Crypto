@@ -80,8 +80,8 @@ def safe_stat (path):
 	except:
 		return None
 
-import regsub
 import glob
+import re
 
 class os_filesystem:
 	path_module = os.path
@@ -171,7 +171,7 @@ class os_filesystem:
 	# utility methods
 	def normalize (self, path):
 		# watch for the ever-sneaky '/+' path element
-		path = regsub.gsub ('/+', '/', path)
+		path = re.sub ('/+', '/', path)
 		p = self.path_module.normpath (path)
 		# remove 'dangling' cdup's.
 		if len(p) > 2 and p[:3] == '/..':
@@ -404,7 +404,7 @@ def unix_longify (file, stat_info):
 		date,
 		file
 		)
-		
+
 # Emulate the unix 'ls' command's date field.
 # it has two formats - if the date is more than 180
 # days in the past, then it's like this:
